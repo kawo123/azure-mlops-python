@@ -44,7 +44,7 @@ Click on **Library** in the **Pipelines** section as indicated below:
 
 ![library_variable groups](./images/library_variable_groups.png)
 
-Please name your variable group **``devopsforai-aml-vg``** as we are using this
+Please name your variable group **``mlops-vg``** as we are using this
 name within our build yaml file.
 
 The variable group should contain the following variables:
@@ -196,9 +196,9 @@ to be the result of the build pipeline **ci-build**:
 ![artifact invoke pipeline](./images/artifact-invoke-pipeline.png)
 
 After that, configure a pipeline to see values from the previously defined
-variable group **devopsforai-aml-vg**. Click on the "Variable groups",
+variable group **mlops-vg**. Click on the "Variable groups",
 and to the right, click on "Link variable group". From there, pick the
-**devopsforai-aml-vg** variable group we created in an earlier step, choose
+**mlops-vg** variable group we created in an earlier step, choose
 "Release" as a variable group scope, and click on "Link":
 
 ![retrain pipeline vg](./images/retrain-pipeline-vg.png)

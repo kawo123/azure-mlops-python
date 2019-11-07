@@ -11,7 +11,7 @@ container: mcr.microsoft.com/mlops/python:latest
 
 
 variables:
-- group: devopsforai-aml-vg
+- group: mlops-vg
 
 
 steps:
