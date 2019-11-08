@@ -1,5 +1,7 @@
 # Getting Started with this Repo
 
+For a complete example setup in Azure DevOps, please see [https://dev.azure.com/kafong/azure-mlops-python](https://dev.azure.com/kafong/azure-mlops-python)
+
 ## Clone or fork this repository
 
 ## Create an Azure DevOps account
@@ -212,10 +214,16 @@ Add a **Command Line Script** step, rename it to **Run Training Pipeline** with 
 
 ```bash
 docker run -v $(System.DefaultWorkingDirectory)/_ci-build/mlops-pipelines/ml_service/pipelines:/pipelines \
- -w=/pipelines -e MODEL_NAME=$MODEL_NAME -e EXPERIMENT_NAME=$EXPERIMENT_NAME \
- -e TENANT_ID=$TENANT_ID -e SP_APP_ID=$SP_APP_ID -e SP_APP_SECRET=$(SP_APP_SECRET) \
- -e SUBSCRIPTION_ID=$SUBSCRIPTION_ID -e RELEASE_RELEASEID=$RELEASE_RELEASEID \
- -e BUILD_BUILDID=$BUILD_BUILDID -e BASE_NAME=$BASE_NAME \
+-w=/pipelines \
+-e MODEL_NAME=$MODEL_NAME \
+-e EXPERIMENT_NAME=$EXPERIMENT_NAME \
+-e TENANT_ID=$TENANT_ID \
+-e SP_APP_ID=$SP_APP_ID \
+-e SP_APP_SECRET=$(SP_APP_SECRET) \
+-e SUBSCRIPTION_ID=$SUBSCRIPTION_ID \
+-e RELEASE_RELEASEID=$RELEASE_RELEASEID \
+-e BUILD_BUILDID=$BUILD_BUILDID \
+-e BASE_NAME=$BASE_NAME \
 mcr.microsoft.com/mlops/python:latest python run_train_pipeline.py
 ```
 
@@ -351,45 +359,52 @@ evaluate and register a model.
 * **Release Deployment pipeline:** deploys a model to QA (ACI) and Prod (AKS)
 environments.
 
-## Deploy the trained model to Azure Web App for containers
+### Test Deployed Model on ACI/AKS
 
-Note: This is an optional step and can be used only if you are deploying your
-scoring service on Azure Web Apps.
+To test the deployed endpoint, you can run `curl` against the ACI/AKS endpoints. You can retrieve the endpoints within the AML workspace.
 
-[Create Image Script](../ml_service/util/create_scoring_image.py)
-can be used to create a scoring image from the release pipeline. The image
-created by this script will be registered under Azure Container Registry (ACR)
-instance that belongs to Azure Machine Learning Service. Any dependencies that
-scoring file depends on can also be packaged with the container with Image
-config. To learn more on how to create a container with AML SDK click
-[here](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py#create-workspace--name--models--image-config-).
+If you are using the Azure Portal experience of AML workspace:
 
-Below is release pipeline with two tasks one to create an image using the above
-script and second is the deploy the image to Web App for containers
-![release_webapp](./images/release-webapp-pipeline.PNG).
+1. Navigate to the AML workspace within Azure Portal
+2. Navigate to "Deployments" on left navigation bar
+  2.1. You should see 2 deployments, one for ACI and one for AKS
+3. Select the ACI deployment and note the "Scoring URI"
+4. Select the AKS deployment and note **both** the "Scoring URI" and "Primary Key"
 
-For the bash script task to invoke the [Create Image Script](../ml_service/util/create_scoring_image.py), specify the following task parameters:
+If you are using the preview experience of AML studio:
 
-| Parameter          | Value                                                                                               |
-| ------------------ | --------------------------------------------------------------------------------------------------- |
-| Display Name       | Create Scoring Image                                                                                |
-| Script             | python3 $(System.DefaultWorkingDirectory)/\_MLOpsPythonRepo/ml_service/util/create_scoring_image.py  |
+1. Navigate to [ml.azure.com](https://ml.azure.com/)
+2. Confirm that your AML Studio (preview) has selected the correct AML workspace
+3. Navigate to "Endpoints" on left navigation bar
+  3.1. You should see 2 endpoints, one for ACI and one for AKS
+4. Select the ACI endpoint and note the "REST endpoint"
+5. Select the AKS deployment
+  4.1. Switch tab to "Consume"
+  4.2. Note **both** the "REST endpoint" and "Primary Key"
 
-![release_createimage](./images/release-task-createimage.PNG)
+In this solution, authentication is **disabled** for the deployed model in ACI (QA). To test the deployed model in ACI, run
 
-Finally, for the Azure WebApp on Container Task, specify the following task
-parameters as it is shown in the table below:
+```bash
+curl -v -d '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}' \
+-H "Content-Type: application/json" \
+-X POST \
+http://{replace-with-your-ACI-endpoint}
 
-| Parameter          | Value                                                                                               |
-| ------------------ | --------------------------------------------------------------------------------------------------- |
-| Azure subscription | Subscription used to deploy Web App                                                                 |
-| App name           | Web App for Containers name                                                                         |
-| Image name         | Specify the fully qualified container image name. For example, 'myregistry.azurecr.io/nginx:latest' |
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+"{\"result\": [5063.066696016179, 3703.5654056445483]}"
+```
 
-![release_webapp](./images/release-task-webappdeploy.PNG)
+However, authentication is **enabled** for the deployed model in AKS (Prod), which is a security best practice in production. To test the deployed model in AKS, run
 
-Save the pipeline and create a release to trigger it manually. To create the
-trigger, click on the "Create release" button on the top right of your screen,
-leave the fields blank and click on **Create** at the bottom of the screen.
-Once the pipeline execution is finished, check out deployments in the
-**mlops-AML-WS** workspace.
+```bash
+curl -v -d '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}' \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer {replace-with-your-AKS-service-key}" \
+-X POST \
+http://{replace-with-your-AKS-endpoint}
+
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+"{\"result\": [5063.066696016179, 3703.5654056445483]}"
+```

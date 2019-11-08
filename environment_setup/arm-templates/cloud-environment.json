@@ -35,7 +35,8 @@
     "keyVaultName": "[concat(parameters('baseName'),'-AML-KV')]",
     "tenantId": "[subscription().tenantId]",
     "applicationInsightsName": "[concat(parameters('baseName'),'-AML-AI')]",
-    "containerRegistryName": "[concat(toLower(parameters('baseName')),'amlcr')]"
+    "containerRegistryName": "[concat(toLower(parameters('baseName')),'amlcr')]",
+    "aksClusterName": "[concat(parameters('baseName'),'-AML-AKS')]"
   },
   "resources": [
     {
@@ -99,6 +100,28 @@
       }
     },
     {
+      "type": "Microsoft.ContainerService/managedClusters",
+      "apiVersion": "2019-10-01",
+      "name": "[variables('aksClusterName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "kubernetesVersion": "1.13.12",
+        "agentPoolProfiles": [
+          {
+            "name": "agentpool",
+            "count": 3,
+            "vmSize": "Standard_D3_v2",
+            "osDiskSizeGB": 100,
+            "maxPods": 110,
+            "type": "AvailabilitySet",
+            "orchestratorVersion": "1.13.12",
+            "osType": "Linux"
+          }
+        ],
+        "enableRBAC": true
+      }
+    },
+    {
       "type": "Microsoft.MachineLearningServices/workspaces",
       "apiVersion": "2018-11-19",
       "name": "[variables('amlWorkspaceName')]",
@@ -107,7 +130,8 @@
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
         "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
-        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]",
+        "[resourceId('Microsoft.ContainerService/managedClusters', variables('aksClusterName'))]"
       ],
       "identity": {
         "type": "systemAssigned"
@@ -119,6 +143,21 @@
         "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
         "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]"
       }
-    }    
+    },
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces/computes",
+      "apiVersion": "2018-11-19",
+      "name": "[concat(variables('amlWorkspaceName'), '/', variables('aksClusterName'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('amlWorkspaceName'))]",
+        "[resourceId('Microsoft.ContainerService/managedClusters', variables('aksClusterName'))]"
+      ],
+      "properties": {
+        "resourceId": "[resourceId('Microsoft.ContainerService/managedClusters', variables('aksClusterName'))]",
+        "computeType": "AKS",
+        "computeLocation": "[parameters('location')]"
+      }
+    }
   ]
 }

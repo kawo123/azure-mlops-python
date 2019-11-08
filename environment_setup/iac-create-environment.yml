@@ -32,5 +32,3 @@ steps:
     overrideParameters: '-baseName $(BASE_NAME) -location $(LOCATION)'
     deploymentMode: 'Incremental'
   displayName: 'Deploy MLOps resources to Azure'
-
-  
