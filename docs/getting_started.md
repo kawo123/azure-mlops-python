@@ -177,7 +177,7 @@ triggered or automatically triggered every time there's a change in the master
 branch. The pipeline performs linting, unit testing, and builds and publishes an
 **ML Training Pipeline** in a **ML Workspace**.
 
-### Set up a Release Trigger Pipeline to Train the Model
+### Import Release Pipelines to Deploy Models
 
 The next step is to invoke the training pipeline created in the previous step.
 It can be done with a **Release Pipeline**. Before you implement the release
@@ -200,7 +200,7 @@ the deployed Azure resource group and Azure ML workspace.
 ![workspace connection](./images/workspace-connection.jpg)
 
 If you have been following the naming convention closely, you can import
-the JSON definitions of release pipelines for more faster setup.
+the JSON definitions of release pipelines for faster setup.
 
 1. Click on the Pipelines/Releases menu, and then **New**, and then click on
 **Import release pipeline**.
@@ -235,6 +235,11 @@ list, and select **ubuntu-16.04** from **Agent Specification**, and then
 click **Save**.
 9. Repeat step 8 for **Prod (AKS)** task.
 10. Click **Save** and then click **Create release** to execute the pipeline
+
+Proceed to section [Test Deployed Model on ACI/AKS](#test-deployed-model-on-aciaks)
+if you followed the steps to importing release pipelines.
+
+### Set up a Release Trigger Pipeline to Train the Model [Optional]
 
 \[Optional\] If you would like to experience building Azure release pipeline from end-to-end,
 follow the below steps.
@@ -312,7 +317,7 @@ it is finished and make sure there is a new model in the **ML Workspace**:
 
 Good! Now we have a trained model.
 
-### Set up a Release Deployment Pipeline to Deploy the Model
+### Set up a Release Deployment Pipeline to Deploy the Model [Optional]
 
 The final step is to deploy the model across environments with a release
 pipeline. There will be a **``QA``** environment running on
