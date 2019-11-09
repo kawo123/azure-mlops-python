@@ -28,7 +28,10 @@ To deploy this solution in your subscription, follow the manual instructions in 
 
 If you have deployed this solution in Azure Pipeline **AND** want to recreate your Azure environment:
 
-1. 
+1. Execute the infrastructure as code (IaC) pipeline to provision Azure resources
+2. Execute the build pipeline to publish AML training pipeline
+3. Confirm that release trigger pipeline is executing/executed (from automatic CI trigger). This will trigger AML pipeline to execute, which may take ~ 20 minutes to complete
+4. Execute the release deployment pipeline to deploy model to ACI and AKS, which may take ~ 20 minutes to complete
 
 ## Architecture Diagram
 

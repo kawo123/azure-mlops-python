@@ -1,0 +1,317 @@
+{
+  "source": 2,
+  "revision": 6,
+  "description": null,
+  "createdBy": {
+    "displayName": "Ka Wo Fong",
+    "url": "https://spsprodwus21.vssps.visualstudio.com/A0c811bd2-8125-4dbf-a2a8-efb886f76f9d/_apis/Identities/d9486e46-0877-6804-b7d4-9484f052cc3f",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+      }
+    },
+    "id": "d9486e46-0877-6804-b7d4-9484f052cc3f",
+    "uniqueName": "kafong@microsoft.com",
+    "imageUrl": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm",
+    "descriptor": "aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+  },
+  "createdOn": "2019-11-07T18:23:32.680Z",
+  "modifiedBy": {
+    "displayName": "Ka Wo Fong",
+    "url": "https://spsprodwus21.vssps.visualstudio.com/A0c811bd2-8125-4dbf-a2a8-efb886f76f9d/_apis/Identities/d9486e46-0877-6804-b7d4-9484f052cc3f",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+      }
+    },
+    "id": "d9486e46-0877-6804-b7d4-9484f052cc3f",
+    "uniqueName": "kafong@microsoft.com",
+    "imageUrl": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm",
+    "descriptor": "aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+  },
+  "modifiedOn": "2019-11-08T22:01:50.387Z",
+  "isDeleted": false,
+  "lastRelease": {
+    "id": 6,
+    "name": "Release-3",
+    "artifacts": [],
+    "_links": {},
+    "description": "Triggered by ci-build 20191108.2.",
+    "releaseDefinition": {
+      "id": 1,
+      "projectReference": null,
+      "_links": {}
+    },
+    "createdOn": "2019-11-08T22:39:25.103Z",
+    "createdBy": {
+      "displayName": "Ka Wo Fong",
+      "url": "https://spsprodwus21.vssps.visualstudio.com/A0c811bd2-8125-4dbf-a2a8-efb886f76f9d/_apis/Identities/d9486e46-0877-6804-b7d4-9484f052cc3f",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+        }
+      },
+      "id": "d9486e46-0877-6804-b7d4-9484f052cc3f",
+      "uniqueName": "kafong@microsoft.com",
+      "imageUrl": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm",
+      "descriptor": "aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+    }
+  },
+  "variables": {},
+  "variableGroups": [
+    6
+  ],
+  "environments": [
+    {
+      "id": 1,
+      "name": "Invoke Training Pipeline",
+      "rank": 1,
+      "owner": {
+        "displayName": "Ka Wo Fong",
+        "url": "https://spsprodwus21.vssps.visualstudio.com/A0c811bd2-8125-4dbf-a2a8-efb886f76f9d/_apis/Identities/d9486e46-0877-6804-b7d4-9484f052cc3f",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+          }
+        },
+        "id": "d9486e46-0877-6804-b7d4-9484f052cc3f",
+        "uniqueName": "kafong@microsoft.com",
+        "imageUrl": "https://dev.azure.com/kafong/_apis/GraphProfile/MemberAvatars/aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm",
+        "descriptor": "aad.ZDk0ODZlNDYtMDg3Ny03ODA0LWI3ZDQtOTQ4NGYwNTJjYzNm"
+      },
+      "variables": {},
+      "variableGroups": [],
+      "preDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 1
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 1
+        }
+      },
+      "deployStep": {
+        "id": 2
+      },
+      "postDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 3
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 2
+        }
+      },
+      "deployPhases": [
+        {
+          "deploymentInput": {
+            "parallelExecution": {
+              "parallelExecutionType": 0
+            },
+            "agentSpecification": {
+              "identifier": "ubuntu-16.04"
+            },
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": {
+              "downloadInputs": []
+            },
+            "queueId": 81,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": 1,
+          "name": "Agent job",
+          "refName": null,
+          "workflowTasks": [
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Run Training Pipeline",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "docker run -v $(System.DefaultWorkingDirectory)/_ci-build/mlops-pipelines/ml_service/pipelines:/pipelines \\\n-w=/pipelines \\\n-e MODEL_NAME=$MODEL_NAME \\\n-e EXPERIMENT_NAME=$EXPERIMENT_NAME \\\n-e TENANT_ID=$TENANT_ID \\\n-e SP_APP_ID=$SP_APP_ID \\\n-e SP_APP_SECRET=$(SP_APP_SECRET) \\\n-e SUBSCRIPTION_ID=$SUBSCRIPTION_ID \\\n-e RELEASE_RELEASEID=$RELEASE_RELEASEID \\\n-e BUILD_BUILDID=$BUILD_BUILDID \\\n-e BASE_NAME=$BASE_NAME \\\nmcr.microsoft.com/mlops/python:latest python run_train_pipeline.py",
+                "workingDirectory": "",
+                "failOnStderr": "false"
+              }
+            }
+          ]
+        }
+      ],
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": true,
+        "badgeEnabled": false,
+        "autoLinkWorkItems": false,
+        "pullRequestDeploymentEnabled": false
+      },
+      "demands": [],
+      "conditions": [
+        {
+          "name": "ReleaseStarted",
+          "conditionType": 1,
+          "value": ""
+        }
+      ],
+      "executionPolicy": {
+        "concurrencyCount": 1,
+        "queueDepthCount": 0
+      },
+      "schedules": [],
+      "currentRelease": {
+        "id": 6,
+        "url": "https://vsrm.dev.azure.com/kafong/1971ea38-6ede-4d4c-8d32-b13bce09374c/_apis/Release/releases/6",
+        "_links": {}
+      },
+      "retentionPolicy": {
+        "daysToKeep": 30,
+        "releasesToKeep": 3,
+        "retainBuild": true
+      },
+      "processParameters": {},
+      "properties": {
+        "BoardsEnvironmentType": {
+          "$type": "System.String",
+          "$value": "unmapped"
+        },
+        "LinkBoardsWorkItems": {
+          "$type": "System.String",
+          "$value": "False"
+        }
+      },
+      "preDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "environmentTriggers": [],
+      "badgeUrl": "https://vsrm.dev.azure.com/kafong/_apis/public/Release/badge/1971ea38-6ede-4d4c-8d32-b13bce09374c/1/1"
+    }
+  ],
+  "artifacts": [
+    {
+      "sourceId": "1971ea38-6ede-4d4c-8d32-b13bce09374c:12",
+      "type": "Build",
+      "alias": "_ci-build",
+      "definitionReference": {
+        "artifactSourceDefinitionUrl": {
+          "id": "https://dev.azure.com/kafong/_permalink/_build/index?collectionId=f5482f2e-e912-4d42-8590-ab0a48e9edf3&projectId=1971ea38-6ede-4d4c-8d32-b13bce09374c&definitionId=12",
+          "name": ""
+        },
+        "defaultVersionBranch": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionSpecific": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionTags": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionType": {
+          "id": "latestType",
+          "name": "Latest"
+        },
+        "definition": {
+          "id": "12",
+          "name": "ci-build"
+        },
+        "definitions": {
+          "id": "",
+          "name": ""
+        },
+        "IsMultiDefinitionType": {
+          "id": "False",
+          "name": "False"
+        },
+        "project": {
+          "id": "1971ea38-6ede-4d4c-8d32-b13bce09374c",
+          "name": "azure-mlops-python"
+        },
+        "repository": {
+          "id": "",
+          "name": ""
+        }
+      },
+      "isPrimary": true,
+      "isRetained": false
+    }
+  ],
+  "triggers": [
+    {
+      "artifactAlias": "_ci-build",
+      "triggerConditions": [],
+      "triggerType": 1
+    }
+  ],
+  "releaseNameFormat": "Release-$(rev:r)",
+  "tags": [],
+  "properties": {
+    "DefinitionCreationSource": {
+      "$type": "System.String",
+      "$value": "ReleaseNew"
+    },
+    "IntegrateBoardsWorkItems": {
+      "$type": "System.String",
+      "$value": "False"
+    },
+    "IntegrateJiraWorkItems": {
+      "$type": "System.String",
+      "$value": "false"
+    }
+  },
+  "id": 1,
+  "name": "cd-release-trigger",
+  "path": "\\",
+  "projectReference": null,
+  "url": "https://vsrm.dev.azure.com/kafong/1971ea38-6ede-4d4c-8d32-b13bce09374c/_apis/Release/definitions/1",
+  "_links": {
+    "self": {
+      "href": "https://vsrm.dev.azure.com/kafong/1971ea38-6ede-4d4c-8d32-b13bce09374c/_apis/Release/definitions/1"
+    },
+    "web": {
+      "href": "https://dev.azure.com/kafong/1971ea38-6ede-4d4c-8d32-b13bce09374c/_release?definitionId=1"
+    }
+  }
+}

@@ -29,6 +29,6 @@ steps:
     location: $(LOCATION)
     templateLocation: 'Linked artifact'
     csmFile: '$(Build.SourcesDirectory)/environment_setup/arm-templates/cloud-environment.json'
-    overrideParameters: '-baseName $(BASE_NAME) -location $(LOCATION)'
+    overrideParameters: '-baseName $(BASE_NAME) -location $(LOCATION) -existingServicePrincipalClientId $(SP_APP_ID) -existingServicePrincipalClientSecret $(SP_APP_SECRET)'
     deploymentMode: 'Incremental'
   displayName: 'Deploy MLOps resources to Azure'
